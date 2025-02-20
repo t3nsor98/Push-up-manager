@@ -223,7 +223,7 @@ const App = () => {
       date: new Date(log.timestamp).toLocaleDateString("en-US", {
         weekday: "short",
       }),
-      pushups: log.totalPushUps,
+      pushups: log.totalPushUps || 0,
     }));
 
   return (
@@ -252,7 +252,10 @@ const App = () => {
                   </h2>
                   <p className="text-gray-600 dark:text-gray-300">
                     Total pushups:{" "}
-                    {logs.reduce((acc, log) => acc + log.totalPushUps, 0)}
+                    {logs.reduce(
+                      (acc, log) => acc + (log.totalPushUps || 0),
+                      0
+                    )}
                   </p>
                 </div>
               </div>
